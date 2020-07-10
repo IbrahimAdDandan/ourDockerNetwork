@@ -7,4 +7,4 @@ WORKDIR /git/repo
 #  && git clone https://github.com/IbrahimAdDandan/SecurityService.git
 COPY ./sbase-0.0.1-SNAPSHOT.jar .
 EXPOSE 3000
-CMD ["java", "-jar", "sbase-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "sbase-0.0.2-SNAPSHOT.jar"]
