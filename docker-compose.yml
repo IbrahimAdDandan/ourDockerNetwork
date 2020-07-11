@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  security:
+    image: ibrahimaddandan/security:latest
+    ports:
+        - "3000:3000"
+    depends_on:
+      - database
+    deploy:
+        replicas: 2
+        restart_policy:
+            condition: on-failure
+            delay: 5s
+            max_attempts: 3
+            window: 60s
+  database:
+    image: mysql
+    # expose:
+    #   - 3306
+    volumes: 
+      - e:/Projects/data:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=Asama56ab
+      - MYSQL_DATABASE=sbase
+      - MYSQL_USER=owl
+      - MYSQL_PASSWORD=Asama56ab
+    deploy:
+      mode: global
