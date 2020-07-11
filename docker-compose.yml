@@ -13,6 +13,19 @@ services:
             delay: 5s
             max_attempts: 3
             window: 60s
+  employee:
+    image: ibrahimaddandan/employee:latest
+    ports:
+        - "3001:3001"
+    depends_on:
+      - database
+    deploy:
+        replicas: 1
+        restart_policy:
+            condition: on-failure
+            delay: 5s
+            max_attempts: 3
+            window: 60s
   database:
     image: mysql
     # expose:
@@ -26,3 +39,8 @@ services:
       - MYSQL_PASSWORD=Asama56ab
     deploy:
       mode: global
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 60s
